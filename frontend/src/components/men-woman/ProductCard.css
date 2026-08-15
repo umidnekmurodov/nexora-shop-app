@@ -1,0 +1,322 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&display=swap');
+
+/* ─── Page Wrapper ───────────────────────────────────────── */
+.products-page {
+  min-height: 100vh;
+  background: #f9f9f9;
+  padding: 40px 80px 80px;
+  font-family: 'Outfit', 'Poppins', sans-serif;
+}
+
+.products-page-header {
+  margin-bottom: 40px;
+}
+
+.products-page-header h1 {
+  font-size: 48px;
+  font-weight: 200;
+  letter-spacing: 10px;
+  text-transform: uppercase;
+  color: #111;
+  margin-bottom: 10px;
+}
+
+.products-page-header p {
+  font-size: 14px;
+  color: #999;
+  letter-spacing: 1px;
+}
+
+/* ─── Main Content Layout (Sidebar + Grid) ───────────────── */
+.products-content-layout {
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+}
+
+.products-main-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ─── Grid ───────────────────────────────────────────────── */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 28px;
+}
+
+/* ─── Card ───────────────────────────────────────────────── */
+.product-card {
+  background: #fff;
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: box-shadow 0.35s ease, transform 0.35s ease;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  border: 1px solid #eaeaea;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-card:hover {
+  box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+  transform: translateY(-4px);
+}
+
+.product-card-img-wrap {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  background: #f0f0f0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.product-card-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.5s ease;
+}
+
+.product-card:hover .product-card-img-wrap img {
+  transform: scale(1.05);
+}
+
+/* Placeholder when no image */
+.product-card-placeholder {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  background: linear-gradient(135deg, #ececec 0%, #d4d4d4 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: #aaa;
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+
+/* ─── Card Body ──────────────────────────────────────────── */
+.product-card-body {
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.product-card-body h3 {
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  color: #111;
+  margin-bottom: 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.product-card-desc {
+  font-size: 12px;
+  color: #888;
+  letter-spacing: 0.3px;
+  margin-bottom: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.product-card-variants {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.product-card-sizes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.product-card-size-badge {
+  font-size: 11px;
+  font-weight: 500;
+  padding: 2px 6px;
+  background: #f8fafc;
+  color: #334155;
+  border-radius: 4px;
+  border: 1px solid #e2e8f0;
+}
+
+.product-card-colors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+
+.product-card-color-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+}
+
+.product-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+}
+
+.product-card-price {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: #111;
+}
+
+.product-card-price-old {
+  font-size: 12px;
+  color: #aaa;
+  text-decoration: line-through;
+  margin-left: 6px;
+}
+
+/* ── Steppers and Buttons on Card ── */
+.product-card-add {
+  width: 34px;
+  height: 34px;
+  border: 1px solid #111;
+  background: transparent;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 300;
+  color: #111;
+  transition: all 0.25s ease;
+  line-height: 1;
+}
+
+.product-card-add:hover {
+  background: #111;
+  color: #fff;
+}
+
+.product-card-stepper {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #0f172a;
+  color: #ffffff;
+  border-radius: 6px;
+  padding: 4px 8px;
+}
+
+.product-card-stepper button {
+  background: transparent;
+  border: none;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #ffffff;
+  padding: 0 4px;
+  line-height: 1;
+}
+
+.product-card-stepper button:hover {
+  opacity: 0.8;
+}
+
+.product-card-stepper span {
+  font-size: 13px;
+  font-weight: 600;
+  min-width: 16px;
+  text-align: center;
+}
+
+/* ─── Empty State ────────────────────────────────────────── */
+.products-empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 80px 20px;
+  color: #bbb;
+  background: #fff;
+  border-radius: 16px;
+  border: 1px solid #eee;
+}
+
+.products-empty h3 {
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.products-empty p {
+  font-size: 14px;
+  color: #aaa;
+}
+
+/* ─── Loading Skeleton ───────────────────────────────────── */
+.products-skeleton {
+  background: #f0f0f0;
+  position: relative;
+  overflow: hidden;
+}
+
+.products-skeleton::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+  animation: shimmer 1.4s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* ─── Responsive ─────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .products-content-layout {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 768px) {
+  .products-page {
+    padding: 100px 20px 60px;
+  }
+
+  .products-page-header h1 {
+    font-size: 32px;
+    letter-spacing: 6px;
+  }
+
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .products-grid {
+    grid-template-columns: 1fr;
+  }
+}
