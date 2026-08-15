@@ -131,11 +131,11 @@ export const getProducts = async (req: Request, res: Response) => {
       }
     }
 
-    if (is_active !== undefined) {
-      query += ` AND p.is_active = $${index}`;
-      values.push(is_active === 'true' || is_active === true);
-      index += 1;
-    }
+   if (is_active !== undefined) {
+  query += ` AND p.is_active = $${index}`;
+  values.push(is_active === 'true');  // ✅ tuzatilgan
+  index += 1;
+}
 
     if (category) {
       query += ` AND (c.slug = $${index} OR c.id::text = $${index} OR LOWER(c.name) = LOWER($${index}))`;
@@ -290,45 +290,27 @@ export const updateProduct = async (req: Request, res: Response) => {
 };
 
 export const deleteProduct = async (req: Request, res: Response) => {
-  const client = await pool.connect();
   try {
     const { id } = req.params;
 
-    // Start transaction
-    await client.query("BEGIN");
+    // Avval bog'liq yozuvlarni o'chiramiz
+    await pool.query("DELETE FROM product_images WHERE product_id = $1", [id]);
+    await pool.query("DELETE FROM product_variants WHERE product_id = $1", [id]);
+    await pool.query("DELETE FROM reviews WHERE product_id = $1", [id]);
 
-    try {
-      // Delete related records in order of dependency
-      await client.query("DELETE FROM product_images WHERE product_id = $1", [id]);
-      await client.query("DELETE FROM product_variants WHERE product_id = $1", [id]);
-      await client.query("DELETE FROM cart_items WHERE product_id = $1", [id]);
-      await client.query("DELETE FROM reviews WHERE product_id = $1", [id]);
-      await client.query("DELETE FROM order_items WHERE product_id = $1", [id]);
+    // Endi mahsulotni o'chiramiz
+    const result = await pool.query("DELETE FROM products WHERE id = $1 RETURNING *", [id]);
 
-      // Finally delete the product itself
-      const result = await client.query("DELETE FROM products WHERE id = $1 RETURNING *", [id]);
-
-      if (result.rows.length === 0) {
-        await client.query("ROLLBACK");
-        return res.status(404).json({ error: "Product not found" });
-      }
-
-      // Commit transaction
-      await client.query("COMMIT");
-      res.json({ message: "Product deleted successfully" });
-    } catch (error: any) {
-      await client.query("ROLLBACK");
-      console.error("Delete product transaction error:", error.message);
-      throw error;
+    if (result.rows.length === 0) {
+      return res.status(404).json({ error: "Product not found" });
     }
-  } catch (error: any) {
-    console.error("Delete product error:", error.message);
-    res.status(500).json({ error: error.message || "Product could not be deleted" });
-  } finally {
-    client.release();
+
+    res.json({ message: "Product deleted" });
+  } catch (error) {
+    console.error("Delete product error:", error);
+    res.status(500).json({ error: "Product could not be deleted" });
   }
 };
-
 export const getSizes = async (_req: Request, res: Response) => {
   try {
     const result = await pool.query("SELECT * FROM sizes ORDER BY name");
