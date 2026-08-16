@@ -42,18 +42,26 @@ process.on("unhandledRejection", (reason) => {
   console.error("⚠️ Unhandled Rejection:", reason);
 });
 
-async function start() {
-  try {
-    await pool.query("SELECT NOW()");
-    console.log("✅ Database connected");
+// Faqat lokal muhitda (development) serverni doimiy tinglashga qo'yamiz.
+// Vercel kabi serverless muhitda app.listen() kerak emas — Vercel
+// har bir so'rovda funksiyani o'zi chaqiradi.
+if (process.env.NODE_ENV !== "production") {
+  async function start() {
+    try {
+      await pool.query("SELECT NOW()");
+      console.log("✅ Database connected");
 
-    // 0.0.0.0 orqali barcha tarmoq interfeyslarida (localhost, 127.0.0.1, IPv6) eshitish
-    app.listen(3000, "0.0.0.0", () => {
-      console.log("🚀 Server running on http://localhost:3000");
-    });
-  } catch (error) {
-    console.error("❌ Database connection failed:", error);
+      // 0.0.0.0 orqali barcha tarmoq interfeyslarida (localhost, 127.0.0.1, IPv6) eshitish
+      app.listen(3000, "0.0.0.0", () => {
+        console.log("🚀 Server running on http://localhost:3000");
+      });
+    } catch (error) {
+      console.error("❌ Database connection failed:", error);
+    }
   }
+
+  start();
 }
 
-start();
+// Vercel serverless funksiyasi sifatida ishlatish uchun eksport qilamiz
+export default app;
