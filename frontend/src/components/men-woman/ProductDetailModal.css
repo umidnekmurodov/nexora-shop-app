@@ -276,3 +276,60 @@
     padding: 20px;
   }
 }
+
+@media (max-width: 480px) {
+  .detail-modal-overlay {
+    padding: 0;
+    align-items: flex-end;
+  }
+
+  .detail-modal-card {
+    border-radius: 20px 20px 0 0;
+    max-height: 95vh;
+    width: 100%;
+  }
+
+  .detail-modal-grid {
+    padding: 16px;
+    gap: 16px;
+  }
+
+  .detail-modal-close {
+    top: 12px;
+    right: 14px;
+    width: 32px;
+    height: 32px;
+    font-size: 18px;
+  }
+
+  .detail-main-img-wrap {
+    border-radius: 10px;
+  }
+
+  .detail-title {
+    font-size: 20px;
+  }
+
+  .detail-price-current,
+  .detail-price-box .detail-price-current {
+    font-size: 20px;
+  }
+
+  .detail-price-old {
+    font-size: 14px;
+  }
+
+  .detail-size-btn {
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+
+  .detail-add-btn {
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  .detail-actions-row {
+    flex-wrap: wrap;
+  }
+}

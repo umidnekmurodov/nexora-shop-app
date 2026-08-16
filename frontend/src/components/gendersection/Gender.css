@@ -106,3 +106,59 @@
     font-size: 28px;
   }
 }
+
+@media (max-width: 768px) {
+  .gender-section {
+    padding: 16px;
+    gap: 16px;
+    flex-direction: column;
+  }
+  .gender-card {
+    height: 420px;
+    width: 100%;
+  }
+  .gender-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+  }
+  .gender-content {
+    left: 20px;
+    bottom: 20px;
+  }
+  .gender-content h2 {
+    font-size: 28px;
+    letter-spacing: 4px;
+  }
+  .gender-content p {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .gender-section {
+    padding: 12px;
+    gap: 12px;
+  }
+  .gender-card {
+    height: 360px;
+  }
+  .gender-content {
+    left: 16px;
+    bottom: 16px;
+  }
+  .gender-content h2 {
+    font-size: 26px;
+    letter-spacing: 3px;
+    margin-bottom: 4px;
+  }
+  .gender-content p {
+    font-size: 12px;
+    margin-bottom: 12px;
+  }
+  .gender-btn {
+    padding: 8px 18px;
+    font-size: 12px;
+  }
+}

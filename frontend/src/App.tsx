@@ -1,4 +1,5 @@
 import { Navigate, Route, Routes } from "react-router-dom";
+import './App.css';
 import Mainlayout from "./layout/Mainlayout";
 import Home from "./components/home/Home";
 import Mencard from "./components/men-woman/Mencard";

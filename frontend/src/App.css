@@ -1,0 +1,43 @@
+/* ─── Global Mobile Reset & Safe Area ────────────────────── */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  /* Gorizontal scroll oldini olish */
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  /* iPhone safe area support */
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+
+/* Barcha rasm va media elementlar konteynerdan toshmasin */
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ─── iPhone / iOS uchun input zoom oldini olish ──────────
+   font-size 16px dan kichik bo'lsa iOS avtomatik zoom qiladi
+*/
+@media (max-width: 480px) {
+  input[type='text'],
+  input[type='email'],
+  input[type='password'],
+  input[type='number'],
+  input[type='search'],
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+}

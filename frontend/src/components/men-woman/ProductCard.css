@@ -316,7 +316,78 @@
 }
 
 @media (max-width: 480px) {
+  .products-page {
+    padding: 100px 16px 50px;
+  }
+
+  .products-page-header h1 {
+    font-size: 26px;
+    letter-spacing: 4px;
+  }
+
+  .products-page-header p {
+    font-size: 12px;
+  }
+
   .products-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  /* Rasm nisbatini kichik ekranlarda 4/5 ga o'zgartirish */
+  .product-card-img-wrap,
+  .product-card-placeholder {
+    aspect-ratio: 4 / 5;
+  }
+
+  .product-card-body {
+    padding: 10px;
+  }
+
+  .product-card-body h3 {
+    font-size: 13px;
+    letter-spacing: 0;
+  }
+
+  .product-card-desc {
+    font-size: 11px;
+    margin-bottom: 8px;
+  }
+
+  .product-card-price {
+    font-size: 14px;
+  }
+
+  .product-card-price-old {
+    font-size: 11px;
+  }
+
+  .product-card-add {
+    width: 28px;
+    height: 28px;
+    font-size: 16px;
+  }
+
+  .product-card-stepper {
+    padding: 3px 6px;
+    gap: 4px;
+  }
+
+  .product-card-stepper button {
+    font-size: 13px;
+  }
+
+  .product-card-stepper span {
+    font-size: 12px;
+  }
+
+  .product-card-size-badge {
+    font-size: 10px;
+    padding: 1px 4px;
+  }
+
+  .product-card-color-dot {
+    width: 12px;
+    height: 12px;
   }
 }
