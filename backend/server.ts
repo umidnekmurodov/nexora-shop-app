@@ -8,6 +8,8 @@ import authRoutes from "./rotes/authRoutes";
 import attributeRoutes from "./rotes/attributeRoutes";
 
 import cors from "cors";
+console.log("DATABASE_URL mavjudmi:", !!process.env.DATABASE_URL);
+console.log("NODE_ENV:", process.env.NODE_ENV);
 
 const app = express();
 
