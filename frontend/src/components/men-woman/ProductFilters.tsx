@@ -56,7 +56,7 @@ export default function ProductFilters({ onFilterChange }: ProductFiltersProps) 
       <aside className={`filters-sidebar ${mobileOpen ? 'open-mobile' : ''}`}>
         <div className="filters-header">
           <h3>
-            <span>🔍</span> Filtrlar
+            <span>🔍</span> Qidiruv
           </h3>
           {hasActiveFilters && (
             <button className="btn-clear-filters" onClick={handleClearAll}>
@@ -77,44 +77,8 @@ export default function ProductFilters({ onFilterChange }: ProductFiltersProps) 
           />
         </div>
 
-        {/* Category Dropdown */}
-        <div className="filter-group">
-          <label>Kategoriya</label>
-          <select
-            className="filter-select"
-            value={currentCategory}
-            onChange={(e) => updateParam('category', e.target.value)}
-          >
-            <option value="">Barcha kategoriyalar</option>
-            {categories.map((cat) => (
-              <option key={cat.id} value={cat.slug || cat.name}>
-                {cat.name}
-              </option>
-            ))}
-          </select>
-        </div>
-
-        {/* Price Range */}
-        <div className="filter-group">
-          <label>Narx (so'm)</label>
-          <div className="price-inputs-row">
-            <input
-              type="number"
-              className="filter-input"
-              placeholder="Min"
-              value={currentMinPrice}
-              onChange={(e) => updateParam('minPrice', e.target.value)}
-            />
-            <span>-</span>
-            <input
-              type="number"
-              className="filter-input"
-              placeholder="Max"
-              value={currentMaxPrice}
-              onChange={(e) => updateParam('maxPrice', e.target.value)}
-            />
-          </div>
-        </div>
+        
+      
       </aside>
     </>
   );
