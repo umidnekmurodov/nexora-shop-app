@@ -170,11 +170,7 @@ export const getProducts = async (req: Request, res: Response) => {
     }
 
     if (search) {
-      query += ` AND (
-        LOWER(p.name) LIKE $${index}
-        OR LOWER(p.description) LIKE $${index}
-        OR LOWER(p.slug) LIKE $${index}
-      )`;
+      query += ` AND LOWER(p.name) LIKE $${index}`;
       values.push(`%${String(search).toLowerCase()}%`);
       index += 1;
     }

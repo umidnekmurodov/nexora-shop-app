@@ -23,9 +23,6 @@ export default function Womancard() {
     };
 
     if (searchParams.get('search')) params.search = searchParams.get('search');
-    if (searchParams.get('category')) params.category = searchParams.get('category');
-    if (searchParams.get('minPrice')) params.minPrice = searchParams.get('minPrice');
-    if (searchParams.get('maxPrice')) params.maxPrice = searchParams.get('maxPrice');
 
     Promise.all([
       getProducts(params),
@@ -78,7 +75,7 @@ export default function Womancard() {
 
       <div className="products-content-layout">
         {/* Left Sidebar Filters */}
-        <ProductFilters onFilterChange={fetchWomenProducts} />
+        <ProductFilters />
 
         {/* Right Products Area */}
         <div className="products-main-area">
