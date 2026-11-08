@@ -302,6 +302,76 @@
   background: #1e293b;
 }
 
+.checkout-success-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(5px);
+  animation: fadeIn 0.2s ease;
+}
+
+.checkout-success-modal {
+  width: 100%;
+  max-width: 420px;
+  padding: 32px 28px;
+  border-radius: 16px;
+  background: #ffffff;
+  color: #0f172a;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  animation: slideDown 0.25s ease-out;
+}
+
+.checkout-success-icon {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #dcfce7;
+  color: #16a34a;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.checkout-success-modal h2 {
+  margin: 0 0 10px;
+  font-size: 20px;
+  line-height: 1.4;
+}
+
+.checkout-success-modal p {
+  margin: 0 0 24px;
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.checkout-success-button {
+  width: 100%;
+  padding: 13px 16px;
+  border: none;
+  border-radius: 8px;
+  background: #0f172a;
+  color: #ffffff;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.checkout-success-button:hover {
+  background: #1e293b;
+}
+
 /* ── Global Search Overlay Modal ── */
 .search-modal-overlay {
   position: fixed;

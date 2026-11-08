@@ -28,6 +28,7 @@ export default function Navbar() {
 
   // Cart Drawer state
   const [isCartOpen, setIsCartOpen] = useState<boolean>(false);
+  const [isCheckoutSuccessOpen, setIsCheckoutSuccessOpen] = useState<boolean>(false);
 
   // Search Modal state
   const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
@@ -78,6 +79,12 @@ export default function Navbar() {
     } else {
       navigate(`/Women?search=${encodeURIComponent(product.name)}`);
     }
+  };
+
+  const handleCheckout = () => {
+    clearCart();
+    setIsCartOpen(false);
+    setIsCheckoutSuccessOpen(true);
   };
 
   return (
@@ -227,15 +234,39 @@ export default function Navbar() {
                   <button
                     className="cart-checkout-btn"
                     style={{ flex: 1 }}
-                    onClick={() => {
-                      alert("Buyurtma rasmiylashtirish sahifasi tez kunda!");
-                    }}
+                    onClick={handleCheckout}
                   >
                     Rasmiylashtirish
                   </button>
                 </div>
               </div>
             )}
+          </div>
+        </div>
+      )}
+
+      {isCheckoutSuccessOpen && (
+        <div
+          className="checkout-success-overlay"
+          onClick={() => setIsCheckoutSuccessOpen(false)}
+        >
+          <div
+            className="checkout-success-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="checkout-success-title"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="checkout-success-icon" aria-hidden="true">✓</div>
+            <h2 id="checkout-success-title">Buyurtma muvaffaqiyatli rasmiylashtirildi!</h2>
+            <p>To'lovingiz qabul qilindi. Xaridingiz uchun rahmat!</p>
+            <button
+              className="checkout-success-button"
+              onClick={() => setIsCheckoutSuccessOpen(false)}
+              autoFocus
+            >
+              Xaridni davom ettirish
+            </button>
           </div>
         </div>
       )}
